@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Koron.tres" type="Environment" id=1]
+[ext_resource path="res://Koron.material" type="Material" id=2]
+[ext_resource path="res://Koron.gd" type="Script" id=3]
+[ext_resource path="res://Koron.ogg" type="AudioStream" id=4]
+
+[sub_resource type="QuadMesh" id=1]
+material = ExtResource( 2 )
+
+[node name="World" type="Spatial"]
+
+[node name="Spatial" type="Spatial" parent="."]
+script = ExtResource( 3 )
+
+[node name="Front" type="MeshInstance" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Back" type="MeshInstance" parent="Spatial"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.5 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Left" type="MeshInstance" parent="Spatial"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 0, -2.98023e-08 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Right" type="MeshInstance" parent="Spatial"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5, 0, -2.98023e-08 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Top" type="MeshInstance" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 2 )
+environment = ExtResource( 1 )
+current = true
+fov = 35.0
